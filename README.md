@@ -11,7 +11,7 @@ As a experienced Data Consulting I combine analytical skills, ability to work in
 
 My credentials include a Master's in Business Management  from the Insper, an institution of higher education and advanced research rated as one of the top and most prestigious business schools in Brazil.
 
-**Background in:** Python, Machine Learning
+**Background in:** Information Systems, Python, Machine Learning
 
 **Links:**
 * [Blog]
