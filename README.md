@@ -6,7 +6,7 @@
 </p>
 
 # Diogo Minucio
-<sub>*Lead Data Scientist* at Space Operations Center</sub>
+<sub>*Lead Data Scientist* </sub>
 
 As a experienced Data Consulting I combine analytical skills, ability to work in team environments, and attention to details. Having spend the last years applying data analytics to Brazilian Retail Banks real problems, I developed a critical thinking and problem-solving skills.
 
@@ -15,9 +15,9 @@ My credentials include a Master's in Business Management  from the Insper, an in
 **Background in:** Python, Machine Learning
 
 **Links:**
-* [Blog](http://sigmoidal.ai)
-* [LinkedIn](https://www.linkedin.com/in/carlosfab)
-* [Medium](https://www.medium.com)
+* [Blog]
+* [LinkedIn](https://www.linkedin.com/in/diogominucio)
+* [Medium]
 
 
 ## Projetos:
