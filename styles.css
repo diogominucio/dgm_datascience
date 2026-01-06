@@ -553,6 +553,15 @@ body {
     color: var(--primary-color);
 }
 
+.client-description {
+    font-size: 0.75rem;
+    color: var(--text-light);
+    text-align: center;
+    margin-top: 0.75rem;
+    line-height: 1.4;
+    font-weight: 500;
+}
+
 /* ===========================
    Contact Section
    =========================== */
