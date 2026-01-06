@@ -280,9 +280,9 @@ if (performance.navigation.type === performance.navigation.TYPE_RELOAD) {
 // ===========================
 // Console Welcome Message
 // ===========================
-console.log('%c👋 Hello, Developer!', 'font-size: 20px; font-weight: bold; color: #E97451;');
-console.log('%cInterested in working with us?', 'font-size: 14px; color: #4A4A4A;');
-console.log('%cSend an email to: contact@mubb.com', 'font-size: 14px; color: #4A4A4A;');
+console.log('%c👋 Olá, Developer!', 'font-size: 20px; font-weight: bold; color: #E97451;');
+console.log('%cInteressado em trabalhar conosco?', 'font-size: 14px; color: #4A4A4A;');
+console.log('%cEnvie um email para: diogominucio@mubbgroup.com', 'font-size: 14px; color: #4A4A4A;');
 
 // ===========================
 // Export leads function (for testing)
