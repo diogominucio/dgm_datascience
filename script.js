@@ -279,7 +279,7 @@ if (performance.navigation.type === performance.navigation.TYPE_RELOAD) {
 // ===========================
 console.log('%c👋 Olá, Developer!', 'font-size: 20px; font-weight: bold; color: #E97451;');
 console.log('%cInteressado em trabalhar conosco?', 'font-size: 14px; color: #4A4A4A;');
-console.log('%cEnvie um email para: contato@mubb.com.br', 'font-size: 14px; color: #4A4A4A;');
+console.log('%cEnvie um email para: diogominucio@mubbgroup.com', 'font-size: 14px; color: #4A4A4A;');
 
 // ===========================
 // Export leads function (for testing)
