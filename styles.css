@@ -480,6 +480,59 @@ body {
 }
 
 /* ===========================
+   Clients & Partners Section
+   =========================== */
+.clients-partners {
+    padding: var(--spacing-xl) 0;
+    background: linear-gradient(135deg, #FAFAFA 0%, #FFFFFF 100%);
+}
+
+.clients-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 2rem;
+    margin-top: 3rem;
+}
+
+.client-card {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 2rem;
+    background-color: white;
+    border-radius: 12px;
+    border: 2px solid var(--border-color);
+    transition: all var(--transition-normal);
+    text-decoration: none;
+    min-height: 120px;
+}
+
+.client-card:hover {
+    transform: translateY(-4px);
+    box-shadow: var(--shadow-md);
+    border-color: var(--primary-color);
+}
+
+.client-logo {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+}
+
+.client-name {
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: var(--text-dark);
+    text-align: center;
+    transition: color var(--transition-fast);
+}
+
+.client-card:hover .client-name {
+    color: var(--primary-color);
+}
+
+/* ===========================
    Contact Section
    =========================== */
 .contact {
