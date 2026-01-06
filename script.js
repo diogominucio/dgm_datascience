@@ -85,7 +85,7 @@ if (leadForm) {
         // Show loading state
         const submitBtn = leadForm.querySelector('.btn-submit');
         const originalText = submitBtn.textContent;
-        submitBtn.textContent = 'Enviando...';
+        submitBtn.textContent = 'Submitting...';
         submitBtn.disabled = true;
 
         // Simulate API call (replace with actual API endpoint)
@@ -122,7 +122,7 @@ if (leadForm) {
                 gtag('event', 'conversion', {
                     'send_to': 'AW-XXXXXXXXX/XXXXXXXXXXXXXX',
                     'value': 1.0,
-                    'currency': 'BRL'
+                    'currency': 'USD'
                 });
             }
 
@@ -133,7 +133,7 @@ if (leadForm) {
 
         } catch (error) {
             console.error('Form submission error:', error);
-            alert('Ocorreu um erro ao enviar o formulário. Por favor, tente novamente.');
+            alert('An error occurred while submitting the form. Please try again.');
             submitBtn.textContent = originalText;
             submitBtn.disabled = false;
         }
@@ -197,18 +197,21 @@ if (emailInput) {
     });
 }
 
-// Phone formatting (Brazilian format)
+// Phone formatting (US format)
 const phoneInput = document.getElementById('phone');
 if (phoneInput) {
     phoneInput.addEventListener('input', (e) => {
         let value = e.target.value.replace(/\D/g, '');
 
-        if (value.length <= 11) {
-            value = value.replace(/(\d{2})(\d)/, '($1) $2');
-            value = value.replace(/(\d{4,5})(\d{4})$/, '$1-$2');
+        if (value.length <= 10) {
+            if (value.length >= 6) {
+                value = value.replace(/(\d{3})(\d{3})(\d{0,4})/, '($1) $2-$3');
+            } else if (value.length >= 3) {
+                value = value.replace(/(\d{3})(\d{0,3})/, '($1) $2');
+            }
             e.target.value = value;
         } else {
-            e.target.value = value.slice(0, 11);
+            e.target.value = value.slice(0, 10);
         }
     });
 }
