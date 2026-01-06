@@ -520,12 +520,33 @@ body {
     width: 100%;
 }
 
+.client-logo-img {
+    max-width: 140px;
+    max-height: 60px;
+    width: auto;
+    height: auto;
+    object-fit: contain;
+    filter: grayscale(100%);
+    opacity: 0.7;
+    transition: all var(--transition-normal);
+}
+
+.client-card:hover .client-logo-img {
+    filter: grayscale(0%);
+    opacity: 1;
+    transform: scale(1.05);
+}
+
 .client-name {
     font-size: 1.25rem;
     font-weight: 700;
     color: var(--text-dark);
     text-align: center;
     transition: color var(--transition-fast);
+}
+
+.client-fallback {
+    display: none;
 }
 
 .client-card:hover .client-name {
