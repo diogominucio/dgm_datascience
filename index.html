@@ -38,6 +38,28 @@
     <section class="hero">
         <div class="container">
             <div class="hero-content">
+                <div class="hero-visual">
+                    <div class="animated-icon">
+                        <svg width="200" height="200" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+                            <defs>
+                                <linearGradient id="gradient1" x1="0%" y1="0%" x2="100%" y2="100%">
+                                    <stop offset="0%" style="stop-color:#E97451;stop-opacity:1" />
+                                    <stop offset="100%" style="stop-color:#D65A3A;stop-opacity:1" />
+                                </linearGradient>
+                                <linearGradient id="gradient2" x1="0%" y1="0%" x2="100%" y2="100%">
+                                    <stop offset="0%" style="stop-color:#F39575;stop-opacity:0.8" />
+                                    <stop offset="100%" style="stop-color:#E97451;stop-opacity:0.8" />
+                                </linearGradient>
+                            </defs>
+                            <!-- Outer diamond -->
+                            <path class="icon-shape outer" d="M 100 20 L 180 100 L 100 180 L 20 100 Z" fill="url(#gradient1)" />
+                            <!-- Inner diamond -->
+                            <path class="icon-shape inner" d="M 100 50 L 150 100 L 100 150 L 50 100 Z" fill="url(#gradient2)" />
+                            <!-- Center dot -->
+                            <circle class="icon-center" cx="100" cy="100" r="8" fill="#fff" />
+                        </svg>
+                    </div>
+                </div>
                 <div class="hero-text">
                     <h1 class="hero-title">
                         Transform data into
