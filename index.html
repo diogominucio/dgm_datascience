@@ -38,35 +38,57 @@
     <section class="hero">
         <div class="container">
             <div class="hero-content">
+                <div class="hero-visual">
+                    <div class="animated-icon">
+                        <svg width="200" height="200" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+                            <defs>
+                                <linearGradient id="gradient1" x1="0%" y1="0%" x2="100%" y2="100%">
+                                    <stop offset="0%" style="stop-color:#E97451;stop-opacity:1" />
+                                    <stop offset="100%" style="stop-color:#D65A3A;stop-opacity:1" />
+                                </linearGradient>
+                                <linearGradient id="gradient2" x1="0%" y1="0%" x2="100%" y2="100%">
+                                    <stop offset="0%" style="stop-color:#F39575;stop-opacity:0.8" />
+                                    <stop offset="100%" style="stop-color:#E97451;stop-opacity:0.8" />
+                                </linearGradient>
+                            </defs>
+                            <!-- Outer diamond -->
+                            <path class="icon-shape outer" d="M 100 20 L 180 100 L 100 180 L 20 100 Z" fill="url(#gradient1)" />
+                            <!-- Inner diamond -->
+                            <path class="icon-shape inner" d="M 100 50 L 150 100 L 100 150 L 50 100 Z" fill="url(#gradient2)" />
+                            <!-- Center dot -->
+                            <circle class="icon-center" cx="100" cy="100" r="8" fill="#fff" />
+                        </svg>
+                    </div>
+                </div>
                 <div class="hero-text">
                     <h1 class="hero-title">
-                        Transforme dados em
-                        <span class="highlight">crescimento exponencial</span>
+                        Transform data into
+                        <span class="highlight">exponential growth</span>
                     </h1>
                     <p class="hero-subtitle">
-                        Somos especialistas em estruturação de dados e IA aplicada ao growth marketing.
-                        Extraímos insights profundos que impulsionam resultados reais e mensuráveis.
+                        We are experts in data structuring and AI applied to growth marketing.
+                        We extract deep insights that drive real and measurable results.
                     </p>
                     <div class="hero-cta">
                         <button class="btn-primary" onclick="scrollToContact()">
-                            Agende uma Consultoria Gratuita
+                            Schedule a Free Consultation
                         </button>
                         <a href="#approach" class="btn-secondary">
-                            Conheça Nossa Metodologia
+                            Learn Our Methodology
                         </a>
                     </div>
                     <div class="hero-stats">
                         <div class="stat">
                             <div class="stat-number">300%</div>
-                            <div class="stat-label">Crescimento médio dos clientes</div>
+                            <div class="stat-label">Average client growth</div>
                         </div>
                         <div class="stat">
                             <div class="stat-number">98%</div>
-                            <div class="stat-label">Taxa de sucesso em projetos</div>
+                            <div class="stat-label">Project success rate</div>
                         </div>
                         <div class="stat">
                             <div class="stat-number">50+</div>
-                            <div class="stat-label">Projetos de IA concluídos</div>
+                            <div class="stat-label">AI projects completed</div>
                         </div>
                     </div>
                 </div>
