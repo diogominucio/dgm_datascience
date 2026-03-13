@@ -1,0 +1,8 @@
+.env
+data/*.json
+data/*.csv
+reports/*.html
+blinds_monitor.log
+__pycache__/
+*.pyc
+node_modules/
