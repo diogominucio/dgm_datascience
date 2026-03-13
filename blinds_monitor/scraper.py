@@ -9,9 +9,18 @@ from datetime import datetime
 import requests
 from bs4 import BeautifulSoup
 
-from config import CATEGORIES, DEFAULT_HEIGHT, DEFAULT_WIDTH
+from config import (
+    CATEGORIES,
+    CLOUDFLARE_ACCOUNT_ID,
+    CLOUDFLARE_API_TOKEN,
+    DEFAULT_HEIGHT,
+    DEFAULT_WIDTH,
+)
 
 logger = logging.getLogger(__name__)
+
+# Scraping method: "direct" first, fallback to "cloudflare_browser" if available
+SCRAPE_METHOD = "auto"  # "direct", "cloudflare_browser", or "auto"
 
 # Headers to mimic a real browser
 HEADERS = {
@@ -27,19 +36,77 @@ HEADERS = {
 }
 
 
+def _fetch_with_cloudflare_browser(url: str) -> str | None:
+    """Fetch a page using Cloudflare Browser Rendering API (bypasses bot protection)."""
+    if not CLOUDFLARE_API_TOKEN or not CLOUDFLARE_ACCOUNT_ID:
+        return None
+
+    endpoint = (
+        f"https://api.cloudflare.com/client/v4/accounts/"
+        f"{CLOUDFLARE_ACCOUNT_ID}/browser-rendering/render"
+    )
+    headers = {
+        "Authorization": f"Bearer {CLOUDFLARE_API_TOKEN}",
+        "Content-Type": "application/json",
+    }
+    payload = {
+        "url": url,
+        "wait_until": "networkidle0",
+        "viewport": {"width": 1920, "height": 1080},
+    }
+
+    try:
+        resp = requests.post(endpoint, headers=headers, json=payload, timeout=60)
+        data = resp.json()
+        if data.get("success"):
+            html = data.get("result", {}).get("html", "")
+            if html:
+                logger.info(f"Cloudflare Browser Rendering OK: {len(html)} chars")
+                return html
+        else:
+            errors = data.get("errors", [])
+            logger.warning(f"Cloudflare Browser Rendering failed: {errors}")
+    except Exception as e:
+        logger.warning(f"Cloudflare Browser Rendering error: {e}")
+
+    return None
+
+
+def _fetch_page(url: str) -> str | None:
+    """Fetch page HTML using the best available method."""
+    method = SCRAPE_METHOD
+
+    if method in ("direct", "auto"):
+        try:
+            response = requests.get(url, headers=HEADERS, timeout=30)
+            response.raise_for_status()
+            logger.info(f"Direct fetch OK: {len(response.text)} chars")
+            return response.text
+        except requests.RequestException as e:
+            logger.warning(f"Direct fetch failed for {url}: {e}")
+            if method == "direct":
+                return None
+
+    # Fallback to Cloudflare Browser Rendering
+    if method in ("cloudflare_browser", "auto"):
+        html = _fetch_with_cloudflare_browser(url)
+        if html:
+            return html
+
+    return None
+
+
 def scrape_category_page(category_key: str, category_info: dict) -> list[dict]:
     """Scrape all products from a category page on blinds.com."""
     url = category_info["url"]
     logger.info(f"Scraping category: {category_info['name']} -> {url}")
 
-    try:
-        response = requests.get(url, headers=HEADERS, timeout=30)
-        response.raise_for_status()
-    except requests.RequestException as e:
-        logger.error(f"Failed to fetch {url}: {e}")
+    html = _fetch_page(url)
+    if not html:
+        logger.error(f"Could not fetch {url} with any method")
         return []
 
-    soup = BeautifulSoup(response.text, "lxml")
+    soup = BeautifulSoup(html, "lxml")
     products = []
 
     # Try to extract product data from JSON-LD structured data
